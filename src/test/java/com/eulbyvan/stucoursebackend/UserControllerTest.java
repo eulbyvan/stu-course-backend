@@ -2,8 +2,8 @@ package com.eulbyvan.stucoursebackend;
 
 import com.eulbyvan.stucoursebackend.model.User;
 import com.eulbyvan.stucoursebackend.repo.IUserRepo;
-import com.eulbyvan.stucoursebackend.shared.dto.response.GenericResponse;
-import com.eulbyvan.stucoursebackend.shared.dto.response.ApiError;
+import com.eulbyvan.stucoursebackend.model.dto.response.GenericResponse;
+import com.eulbyvan.stucoursebackend.model.dto.response.ApiError;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,8 +1,6 @@
-package com.eulbyvan.stucoursebackend.shared.dto.response;
+package com.eulbyvan.stucoursebackend.model.dto.response;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * @author stu (https://www.eulbyvan.com/)
@@ -11,8 +9,6 @@ import lombok.NoArgsConstructor;
  */
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class GenericResponse {
     private String code;
     private String status;

@@ -2,8 +2,8 @@ package com.eulbyvan.stucoursebackend.controller;
 
 import com.eulbyvan.stucoursebackend.model.User;
 import com.eulbyvan.stucoursebackend.service.IUserService;
-import com.eulbyvan.stucoursebackend.shared.dto.response.GenericResponse;
-import com.eulbyvan.stucoursebackend.shared.dto.response.SuccessResponse;
+import com.eulbyvan.stucoursebackend.model.dto.response.GenericResponse;
+import com.eulbyvan.stucoursebackend.model.dto.response.SuccessResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,10 +26,21 @@ public class UserController {
     @Autowired
     IUserService userService;
 
-    @PostMapping()
-    public ResponseEntity<GenericResponse> addUser(@Valid @RequestBody User req) {
-        User user = userService.add(req);
-        SuccessResponse res = new SuccessResponse("01", "Created", user);
+    @PostMapping
+    public ResponseEntity<GenericResponse> add(@Valid @RequestBody User user) {
+        // ignore the id field if it's provided in the request body
+        user.setId(null);
+        user.setRoles(null);
+        user.setEnrollments(null);
+
+        User data = userService.add(user);
+
+        SuccessResponse res = new SuccessResponse();
+        res.setCode("01");
+        res.setStatus(HttpStatus.CREATED.getReasonPhrase());
+        res.setMessage("User added");
+        res.setData(data);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(res);
     }
 }

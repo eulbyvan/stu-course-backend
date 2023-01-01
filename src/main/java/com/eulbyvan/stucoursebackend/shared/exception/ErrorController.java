@@ -1,6 +1,6 @@
 package com.eulbyvan.stucoursebackend.shared.exception;
 
-import com.eulbyvan.stucoursebackend.shared.dto.response.ApiError;
+import com.eulbyvan.stucoursebackend.model.dto.response.ApiError;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;

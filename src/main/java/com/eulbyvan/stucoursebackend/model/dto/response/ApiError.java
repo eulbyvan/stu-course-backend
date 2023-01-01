@@ -1,4 +1,4 @@
-package com.eulbyvan.stucoursebackend.shared.dto.response;
+package com.eulbyvan.stucoursebackend.model.dto.response;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
