@@ -1,10 +1,8 @@
 package com.eulbyvan.stucoursebackend.model.entity;
 
 import com.eulbyvan.stucoursebackend.shared.annotation.UniqueCourseTypeName;
-import com.eulbyvan.stucoursebackend.shared.annotation.UniqueRoleName;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

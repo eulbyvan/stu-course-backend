@@ -5,6 +5,8 @@ import com.eulbyvan.stucoursebackend.repo.ICourseTypeRepo;
 import com.eulbyvan.stucoursebackend.service.ICourseTypeService;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * @author stu (https://www.eulbyvan.com/)
  * @version 1.0
@@ -23,6 +25,11 @@ public class CourseTypeService implements ICourseTypeService {
     public CourseType add(CourseType newCourseType) {
         newCourseType.setName(newCourseType.getName().toUpperCase());
         return courseTypeRepo.save(newCourseType);
+    }
+
+    @Override
+    public Optional<CourseType> findByName(String name) {
+        return courseTypeRepo.findByName(name);
     }
 
     @Override
