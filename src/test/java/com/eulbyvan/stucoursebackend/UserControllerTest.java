@@ -224,7 +224,7 @@ public class UserControllerTest {
         user.setUsername(null);
         ResponseEntity<ApiError> response = postSignup(user, ApiError.class);
         Map<String, String> validationErrors = response.getBody().getValidationErrors();
-        assertThat(validationErrors.get("username")).isEqualTo("username cannot be null");
+        assertThat(validationErrors.get("username")).isEqualTo("Username cannot be null");
     }
 
     @Test
@@ -233,7 +233,7 @@ public class UserControllerTest {
         user.setPassword(null);
         ResponseEntity<ApiError> response = postSignup(user, ApiError.class);
         Map<String, String> validationErrors = response.getBody().getValidationErrors();
-        assertThat(validationErrors.get("password")).isEqualTo("cannot be null");
+        assertThat(validationErrors.get("password")).isEqualTo("Cannot be null");
     }
 
     @Test
@@ -242,7 +242,7 @@ public class UserControllerTest {
         user.setUsername("ab");
         ResponseEntity<ApiError> response = postSignup(user, ApiError.class);
         Map<String, String> validationErrors = response.getBody().getValidationErrors();
-        assertThat(validationErrors.get("username")).isEqualTo("it must have minimum 3 and maximum 255 characters");
+        assertThat(validationErrors.get("username")).isEqualTo("It must have minimum 3 and maximum 255 characters");
     }
 
     @Test
@@ -251,7 +251,7 @@ public class UserControllerTest {
         user.setPassword("alllowercase");
         ResponseEntity<ApiError> response = postSignup(user, ApiError.class);
         Map<String, String> validationErrors = response.getBody().getValidationErrors();
-        assertThat(validationErrors.get("password")).isEqualTo("password must have at least one uppercase, one lowercase letter, one number, and one symbol");
+        assertThat(validationErrors.get("password")).isEqualTo("Password must have at least one uppercase, one lowercase letter, one number, and one symbol");
     }
 
     @Test
@@ -268,7 +268,7 @@ public class UserControllerTest {
         User user = createValidUser();
         ResponseEntity<ApiError> response = postSignup(user, ApiError.class);
         Map<String, String> validationErrors = response.getBody().getValidationErrors();
-        assertThat(validationErrors.get("username")).isEqualTo("username is already taken");
+        assertThat(validationErrors.get("username")).isEqualTo("Username is already taken");
     }
 
     public <T> ResponseEntity<T> postSignup(Object request, Class<T> response) {
