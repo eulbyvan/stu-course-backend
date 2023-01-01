@@ -1,6 +1,5 @@
 package com.eulbyvan.stucoursebackend.shared.validation;
 
-import com.eulbyvan.stucoursebackend.model.User;
 import com.eulbyvan.stucoursebackend.repo.IUserRepo;
 import com.eulbyvan.stucoursebackend.shared.annotation.UniqueUsername;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +19,6 @@ public class UniqueUsernameValidator implements ConstraintValidator<UniqueUserna
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return userRepo.findByUsername(value).isEmpty();
+        return userRepo.findByUsername(value.toLowerCase()).isEmpty();
     }
 }

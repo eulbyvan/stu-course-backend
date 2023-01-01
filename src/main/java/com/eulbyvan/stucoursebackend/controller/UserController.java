@@ -1,6 +1,6 @@
 package com.eulbyvan.stucoursebackend.controller;
 
-import com.eulbyvan.stucoursebackend.model.User;
+import com.eulbyvan.stucoursebackend.model.entity.User;
 import com.eulbyvan.stucoursebackend.service.IUserService;
 import com.eulbyvan.stucoursebackend.model.dto.response.GenericResponse;
 import com.eulbyvan.stucoursebackend.model.dto.response.SuccessResponse;

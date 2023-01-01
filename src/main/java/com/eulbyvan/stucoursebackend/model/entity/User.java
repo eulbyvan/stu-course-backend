@@ -1,7 +1,5 @@
-package com.eulbyvan.stucoursebackend.model;
+package com.eulbyvan.stucoursebackend.model.entity;
 
-import com.eulbyvan.stucoursebackend.model.entity.Enrollment;
-import com.eulbyvan.stucoursebackend.model.entity.Role;
 import com.eulbyvan.stucoursebackend.shared.annotation.UniqueUsername;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;

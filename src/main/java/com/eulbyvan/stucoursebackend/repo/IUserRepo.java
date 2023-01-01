@@ -1,6 +1,6 @@
 package com.eulbyvan.stucoursebackend.repo;
 
-import com.eulbyvan.stucoursebackend.model.User;
+import com.eulbyvan.stucoursebackend.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

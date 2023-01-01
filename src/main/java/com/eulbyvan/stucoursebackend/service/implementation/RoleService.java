@@ -1,7 +1,8 @@
-package com.eulbyvan.stucoursebackend.service;
+package com.eulbyvan.stucoursebackend.service.implementation;
 
 import com.eulbyvan.stucoursebackend.model.entity.Role;
 import com.eulbyvan.stucoursebackend.repo.IRoleRepo;
+import com.eulbyvan.stucoursebackend.service.IRoleService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class RoleService implements IRoleService{
+public class RoleService implements IRoleService {
     IRoleRepo roleRepo;
 
     public RoleService(IRoleRepo roleRepo) {
@@ -20,6 +21,7 @@ public class RoleService implements IRoleService{
 
     @Override
     public Role add(Role newRole) {
+        newRole.setName(newRole.getName().toUpperCase());
         return roleRepo.save(newRole);
     }
 

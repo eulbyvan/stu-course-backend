@@ -1,7 +1,6 @@
 package com.eulbyvan.stucoursebackend.shared.validation;
 
 import com.eulbyvan.stucoursebackend.repo.IRoleRepo;
-import com.eulbyvan.stucoursebackend.repo.IUserRepo;
 import com.eulbyvan.stucoursebackend.shared.annotation.UniqueRoleName;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,6 +19,6 @@ public class UniqueRoleNameValidator implements ConstraintValidator<UniqueRoleNa
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return roleRepo.findByName(value).isEmpty();
+        return roleRepo.findByName(value.toUpperCase()).isEmpty();
     }
 }

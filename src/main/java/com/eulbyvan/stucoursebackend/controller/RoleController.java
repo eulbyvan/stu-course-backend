@@ -1,11 +1,9 @@
 package com.eulbyvan.stucoursebackend.controller;
 
-import com.eulbyvan.stucoursebackend.model.User;
 import com.eulbyvan.stucoursebackend.model.dto.response.GenericResponse;
 import com.eulbyvan.stucoursebackend.model.dto.response.SuccessResponse;
 import com.eulbyvan.stucoursebackend.model.entity.Role;
 import com.eulbyvan.stucoursebackend.service.IRoleService;
-import com.eulbyvan.stucoursebackend.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

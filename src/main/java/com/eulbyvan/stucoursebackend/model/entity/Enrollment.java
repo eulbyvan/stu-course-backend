@@ -1,6 +1,5 @@
 package com.eulbyvan.stucoursebackend.model.entity;
 
-import com.eulbyvan.stucoursebackend.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

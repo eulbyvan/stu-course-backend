@@ -1,6 +1,5 @@
 package com.eulbyvan.stucoursebackend.service;
 
-import com.eulbyvan.stucoursebackend.model.User;
 import com.eulbyvan.stucoursebackend.model.entity.Role;
 
 /**

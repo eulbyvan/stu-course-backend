@@ -1,7 +1,8 @@
-package com.eulbyvan.stucoursebackend.service;
+package com.eulbyvan.stucoursebackend.service.implementation;
 
-import com.eulbyvan.stucoursebackend.model.User;
+import com.eulbyvan.stucoursebackend.model.entity.User;
 import com.eulbyvan.stucoursebackend.repo.IUserRepo;
+import com.eulbyvan.stucoursebackend.service.IUserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class UserService implements IUserService{
+public class UserService implements IUserService {
     private IUserRepo userRepo;
     BCryptPasswordEncoder passwordEncoder;
 
@@ -25,6 +26,7 @@ public class UserService implements IUserService{
     @Override
     public User add(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setUsername(user.getUsername().toLowerCase());
         return userRepo.save(user);
     }
 
