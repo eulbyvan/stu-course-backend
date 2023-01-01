@@ -3,6 +3,8 @@ package com.eulbyvan.stucoursebackend.repo;
 import com.eulbyvan.stucoursebackend.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
+
 /**
  * @author stu (https://www.eulbyvan.com/)
  * @version 1.0
@@ -10,5 +12,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 
 public interface IUserRepo extends JpaRepository<User, Long> {
-    User findByUsername(String username);
+    Optional<User> findByUsername(String username);
 }
