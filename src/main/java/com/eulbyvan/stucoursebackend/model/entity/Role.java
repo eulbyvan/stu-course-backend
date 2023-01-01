@@ -1,9 +1,11 @@
 package com.eulbyvan.stucoursebackend.model.entity;
 
+import com.eulbyvan.stucoursebackend.shared.annotation.UniqueRoleName;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author stu (https://www.eulbyvan.com/)
@@ -21,6 +23,8 @@ public class Role {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
+    @NotNull(message = "{stucourse.constraints.rolename.NotNull.message}")
     @Column(nullable = false)
+    @UniqueRoleName
     private String name;
 }
