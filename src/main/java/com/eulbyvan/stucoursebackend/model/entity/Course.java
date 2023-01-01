@@ -1,9 +1,12 @@
 package com.eulbyvan.stucoursebackend.model.entity;
 
+import com.eulbyvan.stucoursebackend.shared.annotation.UniqueCourseTitle;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * @author stu (https://www.eulbyvan.com/)
@@ -21,7 +24,10 @@ public class Course {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
+    @NotNull(message = "{stucourse.constraints.courseTitle.NotNull.message}")
+    @Size(min = 3, max = 255)
     @Column(nullable = false)
+    @UniqueCourseTitle
     private String title;
 
     @ManyToOne

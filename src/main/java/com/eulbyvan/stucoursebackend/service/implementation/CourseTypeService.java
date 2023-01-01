@@ -7,7 +7,6 @@ import com.eulbyvan.stucoursebackend.service.ICourseTypeService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author stu (https://www.eulbyvan.com/)
@@ -30,7 +29,7 @@ public class CourseTypeService implements ICourseTypeService {
 
     @Override
     public CourseType getById(Long id) {
-        return courseTypeRepo.findById(id).orElseThrow(() -> new NotFoundException("CourseType not found"));
+        return courseTypeRepo.findById(id).orElseThrow(() -> new NotFoundException("Course type not found"));
     }
 
     @Override
@@ -41,12 +40,12 @@ public class CourseTypeService implements ICourseTypeService {
 
     @Override
     public CourseType findByName(String name) {
-        return courseTypeRepo.findByName(name).orElseThrow(() -> new NotFoundException("CourseType not found"));
+        return courseTypeRepo.findByName(name).orElseThrow(() -> new NotFoundException("Course type not found"));
     }
 
     @Override
     public CourseType updateById(Long id, CourseType courseType) {
-        CourseType existingCourseType = courseTypeRepo.findById(id).orElseThrow(() -> new NotFoundException("CourseType not found"));
+        CourseType existingCourseType = courseTypeRepo.findById(id).orElseThrow(() -> new NotFoundException("Course type not found"));
 
         existingCourseType.setName(courseType.getName().toUpperCase());
         return courseTypeRepo.save(existingCourseType);

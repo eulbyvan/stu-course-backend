@@ -1,10 +1,9 @@
 package com.eulbyvan.stucoursebackend.controller;
 
-import com.eulbyvan.stucoursebackend.model.entity.User;
-import com.eulbyvan.stucoursebackend.service.IUserService;
 import com.eulbyvan.stucoursebackend.model.dto.response.GenericResponse;
 import com.eulbyvan.stucoursebackend.model.dto.response.SuccessResponse;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.eulbyvan.stucoursebackend.model.entity.User;
+import com.eulbyvan.stucoursebackend.service.IUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,8 +22,11 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserController {
-    @Autowired
     IUserService userService;
+
+    public UserController(IUserService userService) {
+        this.userService = userService;
+    }
 
     @PostMapping
     public ResponseEntity<GenericResponse> add(@Valid @RequestBody User user) {

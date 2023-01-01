@@ -1,7 +1,7 @@
 package com.eulbyvan.stucoursebackend.shared.validation;
 
-import com.eulbyvan.stucoursebackend.repo.IUserRepo;
-import com.eulbyvan.stucoursebackend.shared.annotation.UniqueUsername;
+import com.eulbyvan.stucoursebackend.repo.ICourseRepo;
+import com.eulbyvan.stucoursebackend.shared.annotation.UniqueCourseTitle;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.ConstraintValidator;
@@ -13,12 +13,12 @@ import javax.validation.ConstraintValidatorContext;
  * @since 01/01/2023
  */
 
-public class UniqueUsernameValidator implements ConstraintValidator<UniqueUsername, String> {
+public class UniqueCourseTitleValidator implements ConstraintValidator<UniqueCourseTitle, String> {
     @Autowired
-    IUserRepo userRepo;
+    ICourseRepo courseRepo;
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return userRepo.findByUsername(value.toUpperCase()).isEmpty();
+        return courseRepo.findByTitle(value.toUpperCase()).isEmpty();
     }
 }

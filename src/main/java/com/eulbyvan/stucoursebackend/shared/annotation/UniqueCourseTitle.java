@@ -1,6 +1,6 @@
 package com.eulbyvan.stucoursebackend.shared.annotation;
 
-import com.eulbyvan.stucoursebackend.shared.validation.UniqueCourseTypeNameValidator;
+import com.eulbyvan.stucoursebackend.shared.validation.UniqueCourseTitleValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -15,11 +15,11 @@ import java.lang.annotation.Target;
  * @since 01/01/2023
  */
 
-@Constraint(validatedBy = UniqueCourseTypeNameValidator.class)
+@Constraint(validatedBy = UniqueCourseTitleValidator.class)
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface UniqueCourseTypeName {
-    String message() default "{stucourse.constraints.courseTypeName.UniqueCourseTypeName.message}";
+public @interface UniqueCourseTitle {
+    String message() default "{stucourse.constraints.courseTitle.UniqueCourseTitle.message}";
 
     Class<?>[] groups() default {};
 
