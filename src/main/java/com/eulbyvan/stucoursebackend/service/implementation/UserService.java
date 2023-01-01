@@ -26,7 +26,7 @@ public class UserService implements IUserService {
     @Override
     public User add(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setUsername(user.getUsername().toLowerCase());
+        user.setUsername(user.getUsername().toUpperCase());
         return userRepo.save(user);
     }
 
