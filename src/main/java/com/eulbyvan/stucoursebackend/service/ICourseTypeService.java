@@ -2,6 +2,7 @@ package com.eulbyvan.stucoursebackend.service;
 
 import com.eulbyvan.stucoursebackend.model.entity.CourseType;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -11,8 +12,12 @@ import java.util.Optional;
  */
 
 public interface ICourseTypeService {
-    CourseType add(CourseType newCourseType);
-    Optional<CourseType> findByName(String name);
+    List<CourseType> getAll();
+    CourseType getById(Long id);
+    CourseType add(CourseType courseType);
+    CourseType updateById(Long id, CourseType courseType);
+    void deleteById(Long id);
+    CourseType findByName(String name);
 
     Long count();
 }
