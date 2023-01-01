@@ -21,7 +21,7 @@ import javax.validation.Valid;
  */
 
 @RestController
-@RequestMapping("/api/1.0/roles")
+@RequestMapping("/api/v1/roles")
 public class RoleController {
     @Autowired
     IRoleService roleService;

@@ -19,7 +19,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/api/1.0/course-types")
+@RequestMapping("/api/v1/course-types")
 public class CourseTypeController {
     @Autowired
     ICourseTypeService courseTypeService;

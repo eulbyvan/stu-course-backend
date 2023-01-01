@@ -32,7 +32,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 public class RoleControllerTest {
-    private static final String API_1_0_ROLES = "/api/1.0/roles";
+    private static final String API_V1_ROLES = "/api/v1/roles";
     @Autowired
     TestRestTemplate testRestTemplate;
 
@@ -109,7 +109,7 @@ public class RoleControllerTest {
     public void postRole_whenRoleIsInvalid_receiveApiError() {
         Role role = new Role();
         ResponseEntity<ApiError> response = postSignup(role, ApiError.class);
-        assertThat(response.getBody().getUrl()).isEqualTo(API_1_0_ROLES);
+        assertThat(response.getBody().getUrl()).isEqualTo(API_V1_ROLES);
     }
 
     @Test
@@ -155,7 +155,7 @@ public class RoleControllerTest {
     }
 
     public <T> ResponseEntity<T> postSignup(Object request, Class<T> response) {
-        return testRestTemplate.postForEntity(API_1_0_ROLES, request, response);
+        return testRestTemplate.postForEntity(API_V1_ROLES, request, response);
     }
 
 //    @Test

@@ -32,7 +32,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 public class UserControllerTest {
-    private static final String API_1_0_USERS = "/api/1.0/users";
+    private static final String API_V1_USERS = "/api/v1/users";
     @Autowired
     TestRestTemplate testRestTemplate;
 
@@ -208,7 +208,7 @@ public class UserControllerTest {
     public void postUser_whenUserIsInvalid_receiveApiError() {
         User user = new User();
         ResponseEntity<ApiError> response = postSignup(user, ApiError.class);
-        assertThat(response.getBody().getUrl()).isEqualTo(API_1_0_USERS);
+        assertThat(response.getBody().getUrl()).isEqualTo(API_V1_USERS);
     }
 
     @Test
@@ -272,7 +272,7 @@ public class UserControllerTest {
     }
 
     public <T> ResponseEntity<T> postSignup(Object request, Class<T> response) {
-        return testRestTemplate.postForEntity(API_1_0_USERS, request, response);
+        return testRestTemplate.postForEntity(API_V1_USERS, request, response);
     }
 
 //    @Test
