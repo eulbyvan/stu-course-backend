@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * @author stu (https://www.eulbyvan.com/)
@@ -23,7 +24,8 @@ public class Role {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
-    @NotNull(message = "{stucourse.constraints.rolename.NotNull.message}")
+    @NotNull(message = "{stucourse.constraints.roleName.NotNull.message}")
+    @Size(min = 3, max = 255)
     @Column(nullable = false)
     @UniqueRoleName
     private String name;
