@@ -46,7 +46,7 @@ public class ErrorController {
     public final ResponseEntity<ErrorResponse> handleResourceNotFoundException(NotFoundException ex) {
         ErrorResponse error = new ErrorResponse();
         error.setCode("X00");
-        error.setStatus(HttpStatus.NOT_FOUND.getReasonPhrase());
+        error.setStatus(HttpStatus.NOT_FOUND.toString());
         error.setMessage(ex.getMessage());
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);

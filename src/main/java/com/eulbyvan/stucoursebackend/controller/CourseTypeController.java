@@ -32,7 +32,7 @@ public class CourseTypeController {
 
         SuccessResponse res = new SuccessResponse();
         res.setCode("01");
-        res.setStatus(HttpStatus.OK.getReasonPhrase());
+        res.setStatus(HttpStatus.OK.toString());
         res.setMessage("Course type retrieved by id: " + id);
         res.setData(data);
 
@@ -45,7 +45,7 @@ public class CourseTypeController {
 
         SuccessResponse res = new SuccessResponse();
         res.setCode("01");
-        res.setStatus(HttpStatus.OK.getReasonPhrase());
+        res.setStatus(HttpStatus.OK.toString());
         res.setMessage("Course types retrieved");
         res.setData(data);
 
@@ -61,7 +61,7 @@ public class CourseTypeController {
 
         SuccessResponse res = new SuccessResponse();
         res.setCode("01");
-        res.setStatus(HttpStatus.CREATED.getReasonPhrase());
+        res.setStatus(HttpStatus.CREATED.toString());
         res.setMessage("CourseType added");
         res.setData(data);
 
@@ -74,7 +74,7 @@ public class CourseTypeController {
 
         SuccessResponse res = new SuccessResponse();
         res.setCode("00");
-        res.setStatus(HttpStatus.OK.getReasonPhrase());
+        res.setStatus(HttpStatus.OK.toString());
         res.setMessage("Course type updated by id: " + id);
         res.setData(data);
 
@@ -87,7 +87,7 @@ public class CourseTypeController {
 
         SuccessResponse res = new SuccessResponse();
         res.setCode("00");
-        res.setStatus(HttpStatus.OK.getReasonPhrase());
+        res.setStatus(HttpStatus.OK.toString());
         res.setMessage("Course type deleted by id: " + id);
 
         return ResponseEntity.status(HttpStatus.OK).body(res);

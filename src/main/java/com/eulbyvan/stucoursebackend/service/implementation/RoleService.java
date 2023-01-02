@@ -5,6 +5,8 @@ import com.eulbyvan.stucoursebackend.repo.IRoleRepo;
 import com.eulbyvan.stucoursebackend.service.IRoleService;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * @author stu (https://www.eulbyvan.com/)
  * @version 1.0
@@ -23,6 +25,11 @@ public class RoleService implements IRoleService {
     public Role add(Role newRole) {
         newRole.setName(newRole.getName().toUpperCase());
         return roleRepo.save(newRole);
+    }
+
+    @Override
+    public Optional<Role> getByName(String name) {
+        return roleRepo.findByName(name);
     }
 
     @Override

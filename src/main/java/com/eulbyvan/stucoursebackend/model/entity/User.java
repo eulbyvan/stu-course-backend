@@ -40,9 +40,9 @@ public class User {
     @UniqueUsername
     private String username;
     @NotNull
-    @Size(min = 8, max = 255)
+    @Size(min = 8, max = 36)
     @Column(name = "password")
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$", message = "{stucourse.constraints.password.Pattern.message}")
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,36}$", message = "{stucourse.constraints.password.Pattern.message}")
     private String password;
 
     @ManyToMany

@@ -37,7 +37,7 @@ public class RoleController {
 
         SuccessResponse res = new SuccessResponse();
         res.setCode("01");
-        res.setStatus(HttpStatus.CREATED.getReasonPhrase());
+        res.setStatus(HttpStatus.CREATED.toString());
         res.setMessage("Role added");
         res.setData(data);
 
