@@ -15,7 +15,7 @@ import javax.validation.ConstraintValidatorContext;
 
 public class UniqueRoleNameValidator implements ConstraintValidator<UniqueRoleName, String> {
     @Autowired
-    IRoleRepo roleRepo;
+    private IRoleRepo roleRepo;
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {

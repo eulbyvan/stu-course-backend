@@ -6,6 +6,8 @@ import com.eulbyvan.stucoursebackend.service.IUserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * @author stu (https://www.eulbyvan.com/)
  * @version 1.0
@@ -28,6 +30,11 @@ public class UserService implements IUserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setUsername(user.getUsername().toUpperCase());
         return userRepo.save(user);
+    }
+
+    @Override
+    public Optional<User> getByUsername(String username) {
+        return userRepo.findByUsername(username);
     }
 
     @Override

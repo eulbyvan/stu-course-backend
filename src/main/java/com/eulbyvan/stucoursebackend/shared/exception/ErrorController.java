@@ -27,7 +27,7 @@ public class ErrorController {
     @ExceptionHandler({MethodArgumentNotValidException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiError handleValidationException(MethodArgumentNotValidException exception, HttpServletRequest request) {
-        ApiError apiError = new ApiError(400, "Validation Error", request.getServletPath());
+        ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST.toString(), "Validation Error", request.getServletPath());
 
         BindingResult result = exception.getBindingResult();
         Map<String, String> validationErrors = new HashMap<>();

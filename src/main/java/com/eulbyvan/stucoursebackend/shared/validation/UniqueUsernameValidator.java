@@ -14,8 +14,9 @@ import javax.validation.ConstraintValidatorContext;
  */
 
 public class UniqueUsernameValidator implements ConstraintValidator<UniqueUsername, String> {
+
     @Autowired
-    IUserRepo userRepo;
+    private IUserRepo userRepo;
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {

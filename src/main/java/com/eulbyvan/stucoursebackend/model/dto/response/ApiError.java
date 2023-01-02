@@ -16,12 +16,12 @@ import java.util.Map;
 @NoArgsConstructor
 public class ApiError {
     private long timestamp = new Date().getTime();
-    private int status;
+    private String status;
     private String message;
     private String url;
     private Map<String, String> validationErrors;
 
-    public ApiError(int status, String message, String url) {
+    public ApiError(String status, String message, String url) {
         this.status = status;
         this.message = message;
         this.url = url;

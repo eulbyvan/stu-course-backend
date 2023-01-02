@@ -15,7 +15,7 @@ import javax.validation.ConstraintValidatorContext;
 
 public class UniqueCourseTypeNameValidator implements ConstraintValidator<UniqueCourseTypeName, String> {
     @Autowired
-    ICourseTypeRepo courseTypeRepo;
+    private ICourseTypeRepo courseTypeRepo;
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
