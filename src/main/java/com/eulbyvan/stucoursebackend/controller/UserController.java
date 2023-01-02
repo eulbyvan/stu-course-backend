@@ -3,8 +3,7 @@ package com.eulbyvan.stucoursebackend.controller;
 import com.eulbyvan.stucoursebackend.model.dto.request.EditProfileVM;
 import com.eulbyvan.stucoursebackend.model.dto.response.GenericResponse;
 import com.eulbyvan.stucoursebackend.model.dto.response.SuccessResponse;
-import com.eulbyvan.stucoursebackend.model.entity.Course;
-import com.eulbyvan.stucoursebackend.model.entity.User;
+import com.eulbyvan.stucoursebackend.model.entity.sys.User;
 import com.eulbyvan.stucoursebackend.service.IUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -80,6 +79,19 @@ public class UserController {
         res.setCode("00");
         res.setStatus(HttpStatus.OK.toString());
         res.setMessage("Profile saved");
+        res.setData(data);
+
+        return ResponseEntity.status(HttpStatus.OK).body(res);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<GenericResponse> deleteById(@PathVariable Long id) {
+        User data = userService.deleteById(id);
+
+        SuccessResponse res = new SuccessResponse();
+        res.setCode("00");
+        res.setStatus(HttpStatus.OK.toString());
+        res.setMessage("User deleted by id: " + id);
         res.setData(data);
 
         return ResponseEntity.status(HttpStatus.OK).body(res);

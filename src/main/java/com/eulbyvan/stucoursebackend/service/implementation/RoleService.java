@@ -1,10 +1,13 @@
 package com.eulbyvan.stucoursebackend.service.implementation;
 
-import com.eulbyvan.stucoursebackend.model.entity.Role;
+import com.eulbyvan.stucoursebackend.model.dto.response.NotFoundException;
+import com.eulbyvan.stucoursebackend.model.entity.sys.Role;
 import com.eulbyvan.stucoursebackend.repo.IRoleRepo;
 import com.eulbyvan.stucoursebackend.service.IRoleService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -30,6 +33,37 @@ public class RoleService implements IRoleService {
     @Override
     public Optional<Role> getByName(String name) {
         return roleRepo.findByName(name);
+    }
+
+    @Override
+    public Role getById(Long id) {
+        return roleRepo.findById(id).orElseThrow(() -> new NotFoundException("Role not found"));
+    }
+
+    @Override
+    public List<Role> getAll() {
+        return roleRepo.findAll();
+    }
+
+    @Override
+    public Role updateById(Long id, Role req) {
+        Role existingRole = roleRepo.findById(id).orElseThrow(() -> new NotFoundException("Role not found"));
+
+        existingRole.setName(req.getName());
+        existingRole.setUpdatedDate(LocalDateTime.now());
+
+        return roleRepo.save(existingRole);
+    }
+
+    @Override
+    public Role deleteById(Long id) {
+        Role existingRole = roleRepo.findById(id).orElseThrow(() -> new NotFoundException("Role not found"));
+
+        existingRole.setIsActive(0);
+        existingRole.setIsDeleted(1);
+        existingRole.setDeletedDate(LocalDateTime.now());
+
+        return roleRepo.save(existingRole);
     }
 
     @Override

@@ -1,11 +1,13 @@
 package com.eulbyvan.stucoursebackend.service.implementation;
 
 import com.eulbyvan.stucoursebackend.model.dto.response.NotFoundException;
-import com.eulbyvan.stucoursebackend.model.entity.CourseType;
+import com.eulbyvan.stucoursebackend.model.entity.mst.CourseType;
+import com.eulbyvan.stucoursebackend.model.entity.sys.User;
 import com.eulbyvan.stucoursebackend.repo.ICourseTypeRepo;
 import com.eulbyvan.stucoursebackend.service.ICourseTypeService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -48,12 +50,20 @@ public class CourseTypeService implements ICourseTypeService {
         CourseType existingCourseType = courseTypeRepo.findById(id).orElseThrow(() -> new NotFoundException("Course type not found"));
 
         existingCourseType.setName(courseType.getName().toUpperCase());
+        existingCourseType.setUpdatedDate(LocalDateTime.now());
+
         return courseTypeRepo.save(existingCourseType);
     }
 
     @Override
-    public void deleteById(Long id) {
-        courseTypeRepo.deleteById(id);
+    public CourseType deleteById(Long id) {
+        CourseType existingType = courseTypeRepo.findById(id).orElseThrow(() -> new NotFoundException("Course type not found"));
+
+        existingType.setIsActive(0);
+        existingType.setIsDeleted(1);
+        existingType.setDeletedDate(LocalDateTime.now());
+
+        return courseTypeRepo.save(existingType);
     }
 
     @Override

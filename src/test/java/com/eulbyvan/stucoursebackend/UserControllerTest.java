@@ -1,6 +1,6 @@
 package com.eulbyvan.stucoursebackend;
 
-import com.eulbyvan.stucoursebackend.model.entity.User;
+import com.eulbyvan.stucoursebackend.model.entity.sys.User;
 import com.eulbyvan.stucoursebackend.model.dto.response.ApiError;
 import com.eulbyvan.stucoursebackend.model.dto.response.GenericResponse;
 import com.eulbyvan.stucoursebackend.repo.IUserRepo;

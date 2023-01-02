@@ -1,13 +1,14 @@
 package com.eulbyvan.stucoursebackend.service.implementation;
 
 import com.eulbyvan.stucoursebackend.model.dto.response.NotFoundException;
-import com.eulbyvan.stucoursebackend.model.entity.Course;
-import com.eulbyvan.stucoursebackend.model.entity.CourseType;
+import com.eulbyvan.stucoursebackend.model.entity.mst.Course;
+import com.eulbyvan.stucoursebackend.model.entity.mst.CourseType;
 import com.eulbyvan.stucoursebackend.repo.ICourseRepo;
 import com.eulbyvan.stucoursebackend.service.ICourseService;
 import com.eulbyvan.stucoursebackend.service.ICourseTypeService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -57,13 +58,20 @@ public class CourseService implements ICourseService {
         existingCourse.setLink(course.getLink());
         existingCourse.setDuration(course.getDuration());
         existingCourse.setLevel(course.getLevel());
+        existingCourse.setUpdatedDate(LocalDateTime.now());
 
         return courseRepo.save(existingCourse);
     }
 
     @Override
-    public void deleteById(Long id) {
-        courseRepo.deleteById(id);
+    public Course deleteById(Long id) {
+        Course existingCourse = courseRepo.findById(id).orElseThrow(() -> new NotFoundException("Course not found"));
+
+        existingCourse.setIsActive(0);
+        existingCourse.setIsDeleted(1);
+        existingCourse.setDeletedDate(LocalDateTime.now());
+
+        return courseRepo.save(existingCourse);
     }
 
     @Override

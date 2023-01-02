@@ -1,4 +1,4 @@
-package com.eulbyvan.stucoursebackend.model.entity;
+package com.eulbyvan.stucoursebackend.model.entity.mst;
 
 import com.eulbyvan.stucoursebackend.shared.annotation.UniqueCourseTitle;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -7,6 +7,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 /**
  * @author stu (https://www.eulbyvan.com/)
@@ -16,7 +17,7 @@ import javax.validation.constraints.Size;
 
 @Data
 @Entity
-@Table(name = "courses")
+@Table(name = "mst_courses")
 public class Course {
 
     @Id
@@ -41,4 +42,19 @@ public class Course {
 
     @Column(nullable = false)
     private String link;
+    @Column(name = "is_active")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private int isActive = 1;
+    @Column(name = "is_deleted")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private int isDeleted = 0;
+    @Column(name = "created_date")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private LocalDateTime createdDate = LocalDateTime.now();
+    @Column(name = "deleted_date")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private LocalDateTime deletedDate = null;
+    @Column(name = "updated_date")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private LocalDateTime updatedDate = null;
 }

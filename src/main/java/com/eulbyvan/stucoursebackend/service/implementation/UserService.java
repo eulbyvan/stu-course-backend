@@ -2,13 +2,15 @@ package com.eulbyvan.stucoursebackend.service.implementation;
 
 import com.eulbyvan.stucoursebackend.model.dto.request.EditProfileVM;
 import com.eulbyvan.stucoursebackend.model.dto.response.NotFoundException;
-import com.eulbyvan.stucoursebackend.model.entity.User;
+import com.eulbyvan.stucoursebackend.model.entity.sys.Role;
+import com.eulbyvan.stucoursebackend.model.entity.sys.User;
 import com.eulbyvan.stucoursebackend.repo.IUserRepo;
 import com.eulbyvan.stucoursebackend.service.IRoleService;
 import com.eulbyvan.stucoursebackend.service.IUserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,10 +34,10 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User add(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setUsername(user.getUsername().toUpperCase());
-        return userRepo.save(user);
+    public User add(User req) {
+        req.setPassword(passwordEncoder.encode(req.getPassword()));
+        req.setUsername(req.getUsername().toUpperCase());
+        return userRepo.save(req);
     }
 
     @Override
@@ -58,13 +60,20 @@ public class UserService implements IUserService {
         User existingUser = userRepo.findById(id).orElseThrow(() -> new NotFoundException("User not found"));
 
         existingUser.setDisplayName(req.getDisplayName());
+        existingUser.setUpdatedDate(LocalDateTime.now());
 
         return req;
     }
 
     @Override
-    public void deleteById(Long id) {
-        userRepo.deleteById(id);
+    public User deleteById(Long id) {
+        User existingUser = userRepo.findById(id).orElseThrow(() -> new NotFoundException("User not found"));
+
+        existingUser.setIsActive(0);
+        existingUser.setIsDeleted(1);
+        existingUser.setDeletedDate(LocalDateTime.now());
+
+        return userRepo.save(existingUser);
     }
 
     @Override

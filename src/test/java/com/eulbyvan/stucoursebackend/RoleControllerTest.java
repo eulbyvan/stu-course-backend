@@ -1,6 +1,6 @@
 package com.eulbyvan.stucoursebackend;
 
-import com.eulbyvan.stucoursebackend.model.entity.Role;
+import com.eulbyvan.stucoursebackend.model.entity.sys.Role;
 import com.eulbyvan.stucoursebackend.model.dto.response.ApiError;
 import com.eulbyvan.stucoursebackend.model.dto.response.GenericResponse;
 import com.eulbyvan.stucoursebackend.repo.IRoleRepo;
@@ -19,7 +19,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

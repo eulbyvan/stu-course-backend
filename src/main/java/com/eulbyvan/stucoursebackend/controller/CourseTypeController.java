@@ -2,7 +2,7 @@ package com.eulbyvan.stucoursebackend.controller;
 
 import com.eulbyvan.stucoursebackend.model.dto.response.GenericResponse;
 import com.eulbyvan.stucoursebackend.model.dto.response.SuccessResponse;
-import com.eulbyvan.stucoursebackend.model.entity.CourseType;
+import com.eulbyvan.stucoursebackend.model.entity.mst.CourseType;
 import com.eulbyvan.stucoursebackend.service.ICourseTypeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -83,12 +83,13 @@ public class CourseTypeController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<GenericResponse> deleteById(@PathVariable Long id) {
-        courseTypeService.deleteById(id);
+        CourseType data = courseTypeService.deleteById(id);
 
         SuccessResponse res = new SuccessResponse();
         res.setCode("00");
         res.setStatus(HttpStatus.OK.toString());
         res.setMessage("Course type deleted by id: " + id);
+        res.setData(data);
 
         return ResponseEntity.status(HttpStatus.OK).body(res);
     }

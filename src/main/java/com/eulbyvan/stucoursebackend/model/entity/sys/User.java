@@ -1,5 +1,6 @@
-package com.eulbyvan.stucoursebackend.model.entity;
+package com.eulbyvan.stucoursebackend.model.entity.sys;
 
+import com.eulbyvan.stucoursebackend.model.entity.trx.Enrollment;
 import com.eulbyvan.stucoursebackend.shared.annotation.UniqueUsername;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -11,6 +12,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -44,6 +46,21 @@ public class User {
     @Column(name = "password")
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,36}$", message = "{stucourse.constraints.password.Pattern.message}")
     private String password;
+    @Column(name = "is_active")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private int isActive = 1;
+    @Column(name = "is_deleted")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private int isDeleted = 0;
+    @Column(name = "created_date")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private LocalDateTime createdDate = LocalDateTime.now();
+    @Column(name = "deleted_date")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private LocalDateTime deletedDate = null;
+    @Column(name = "updated_date")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private LocalDateTime updatedDate = null;
 
     @ManyToMany
     @JsonIgnore

@@ -1,7 +1,7 @@
 package com.eulbyvan.stucoursebackend.service;
 
 import com.eulbyvan.stucoursebackend.model.dto.request.EditProfileVM;
-import com.eulbyvan.stucoursebackend.model.entity.User;
+import com.eulbyvan.stucoursebackend.model.entity.sys.User;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,7 +23,7 @@ public interface IUserService {
 
     EditProfileVM editProfile(Long id, EditProfileVM req);
 
-    void deleteById(Long id);
+    User deleteById(Long id);
 
     Long count();
 }

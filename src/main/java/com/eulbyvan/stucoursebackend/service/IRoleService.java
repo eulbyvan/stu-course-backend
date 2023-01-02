@@ -1,7 +1,8 @@
 package com.eulbyvan.stucoursebackend.service;
 
-import com.eulbyvan.stucoursebackend.model.entity.Role;
+import com.eulbyvan.stucoursebackend.model.entity.sys.Role;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -14,6 +15,14 @@ public interface IRoleService {
     Role add(Role newRole);
 
     Optional<Role> getByName(String name);
+
+    Role getById(Long id);
+
+    List<Role> getAll();
+
+    Role updateById(Long id, Role req);
+
+    Role deleteById(Long id);
 
     Long count();
 }

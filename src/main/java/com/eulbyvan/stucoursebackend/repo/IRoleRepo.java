@@ -1,6 +1,6 @@
 package com.eulbyvan.stucoursebackend.repo;
 
-import com.eulbyvan.stucoursebackend.model.entity.Role;
+import com.eulbyvan.stucoursebackend.model.entity.sys.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

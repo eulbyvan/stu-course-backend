@@ -1,5 +1,7 @@
-package com.eulbyvan.stucoursebackend.model.entity;
+package com.eulbyvan.stucoursebackend.model.entity.trx;
 
+import com.eulbyvan.stucoursebackend.model.entity.mst.Course;
+import com.eulbyvan.stucoursebackend.model.entity.sys.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -14,7 +16,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "enrollments")
+@Table(name = "trx_enrollments")
 public class Enrollment {
 
     @Id

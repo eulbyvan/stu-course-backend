@@ -1,6 +1,6 @@
 package com.eulbyvan.stucoursebackend.service;
 
-import com.eulbyvan.stucoursebackend.model.entity.Course;
+import com.eulbyvan.stucoursebackend.model.entity.mst.Course;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public interface ICourseService {
 
     Course updateById(Long id, Course course);
 
-    void deleteById(Long id);
+    Course deleteById(Long id);
 
     Long count();
 }
