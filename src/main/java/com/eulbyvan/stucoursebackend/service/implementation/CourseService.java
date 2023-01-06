@@ -43,10 +43,7 @@ public class CourseService implements ICourseService {
         CourseType existingCourseType = courseTypeService.findByName(courseTypeName);
         newCourse.setCourseType(existingCourseType);
         newCourse.setTitle(newCourse.getTitle().toLowerCase());
-        Course res = courseRepo.save(newCourse);
-
-        res.setTitle(newCourse.getTitle());
-        return res;
+        return courseRepo.save(newCourse);
     }
 
     @Override
