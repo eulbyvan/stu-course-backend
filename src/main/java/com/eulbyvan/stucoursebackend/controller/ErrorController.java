@@ -1,8 +1,8 @@
-package com.eulbyvan.stucoursebackend.shared.exception;
+package com.eulbyvan.stucoursebackend.controller;
 
 import com.eulbyvan.stucoursebackend.model.dto.response.ApiError;
 import com.eulbyvan.stucoursebackend.model.dto.response.ErrorResponse;
-import com.eulbyvan.stucoursebackend.model.dto.response.NotFoundException;
+import com.eulbyvan.stucoursebackend.shared.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;

@@ -1,4 +1,4 @@
-package com.eulbyvan.stucoursebackend.model.dto.response;
+package com.eulbyvan.stucoursebackend.shared.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
