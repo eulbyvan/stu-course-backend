@@ -35,7 +35,7 @@ public class CourseTypeService implements ICourseTypeService {
 
     @Override
     public CourseType add(CourseType newCourseType) {
-        newCourseType.setName(newCourseType.getName().toUpperCase());
+        newCourseType.setName(newCourseType.getName().toLowerCase());
         return courseTypeRepo.save(newCourseType);
     }
 
@@ -48,7 +48,7 @@ public class CourseTypeService implements ICourseTypeService {
     public CourseType updateById(Long id, CourseType courseType) {
         CourseType existingCourseType = courseTypeRepo.findById(id).orElseThrow(() -> new NotFoundException("Course type not found"));
 
-        existingCourseType.setName(courseType.getName().toUpperCase());
+        existingCourseType.setName(courseType.getName().toLowerCase());
         existingCourseType.setUpdatedDate(LocalDateTime.now());
 
         return courseTypeRepo.save(existingCourseType);

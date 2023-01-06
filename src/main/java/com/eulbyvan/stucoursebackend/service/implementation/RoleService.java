@@ -26,7 +26,7 @@ public class RoleService implements IRoleService {
 
     @Override
     public Role add(Role newRole) {
-        newRole.setName(newRole.getName().toUpperCase());
+        newRole.setName(newRole.getName().toLowerCase());
         return roleRepo.save(newRole);
     }
 

@@ -19,6 +19,6 @@ public class UniqueCourseTypeNameValidator implements ConstraintValidator<Unique
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return courseTypeRepo.findByName(value.toUpperCase()).isEmpty();
+        return courseTypeRepo.findByName(value.toLowerCase()).isEmpty();
     }
 }

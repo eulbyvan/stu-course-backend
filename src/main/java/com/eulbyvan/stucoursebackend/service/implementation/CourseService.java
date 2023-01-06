@@ -39,21 +39,24 @@ public class CourseService implements ICourseService {
 
     @Override
     public Course add(Course newCourse) {
-        String courseTypeName = newCourse.getCourseType().getName().toUpperCase();
+        String courseTypeName = newCourse.getCourseType().getName().toLowerCase();
         CourseType existingCourseType = courseTypeService.findByName(courseTypeName);
         newCourse.setCourseType(existingCourseType);
-        newCourse.setTitle(newCourse.getTitle().toUpperCase());
-        return courseRepo.save(newCourse);
+        newCourse.setTitle(newCourse.getTitle().toLowerCase());
+        Course res = courseRepo.save(newCourse);
+
+        res.setTitle(newCourse.getTitle());
+        return res;
     }
 
     @Override
     public Course updateById(Long id, Course course) {
         Course existingCourse = courseRepo.findById(id).orElseThrow(() -> new NotFoundException("Course not found"));
 
-        String courseTypeName = course.getCourseType().getName().toUpperCase();
+        String courseTypeName = course.getCourseType().getName().toLowerCase();
         CourseType existingCourseType = courseTypeService.findByName(courseTypeName);
 
-        existingCourse.setTitle(course.getTitle().toUpperCase());
+        existingCourse.setTitle(course.getTitle().toLowerCase());
         existingCourse.setCourseType(existingCourseType);
         existingCourse.setLink(course.getLink());
         existingCourse.setDuration(course.getDuration());

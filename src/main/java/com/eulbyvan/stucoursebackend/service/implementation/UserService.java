@@ -35,8 +35,11 @@ public class UserService implements IUserService {
     @Override
     public User add(User req) {
         req.setPassword(passwordEncoder.encode(req.getPassword()));
-        req.setUsername(req.getUsername().toUpperCase());
-        return userRepo.save(req);
+        req.setUsername(req.getUsername().toLowerCase());
+        User res = userRepo.save(req);
+
+        res.setUsername(req.getUsername());
+        return res;
     }
 
     @Override

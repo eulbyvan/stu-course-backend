@@ -19,6 +19,6 @@ public class UniqueRoleNameValidator implements ConstraintValidator<UniqueRoleNa
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        return roleRepo.findByName(value.toUpperCase()).isEmpty();
+        return roleRepo.findByName(value.toLowerCase()).isEmpty();
     }
 }

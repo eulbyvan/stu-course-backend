@@ -277,16 +277,18 @@ public class UserControllerTest {
 
     @Test
     public void postUser_whenAnotherUserHasSameName_receiveBadRequest() {
-        userRepo.save(createValidUser());
         User user = createValidUser();
+        user.setUsername(user.getUsername().toLowerCase());
+        userRepo.save(user);
         ResponseEntity<Object> response = postSignup(user, Object.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
     }
 
     @Test
     public void postUser_whenAnotherUserHasSameName_receiveMessageOfDuplicateUsername() {
-        userRepo.save(createValidUser());
         User user = createValidUser();
+        user.setUsername(user.getUsername().toLowerCase());
+        userRepo.save(user);
         ResponseEntity<ApiError> response = postSignup(user, ApiError.class);
         Map<String, String> validationErrors = response.getBody().getValidationErrors();
         assertThat(validationErrors.get("username")).isEqualTo("Username is already taken");
