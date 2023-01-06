@@ -1,8 +1,8 @@
 package com.eulbyvan.stucoursebackend.controller;
 
-import com.eulbyvan.stucoursebackend.model.dto.request.EditProfileVM;
-import com.eulbyvan.stucoursebackend.model.dto.response.GenericResponse;
-import com.eulbyvan.stucoursebackend.model.dto.response.SuccessResponse;
+import com.eulbyvan.stucoursebackend.model.dto.request.EditProfileReq;
+import com.eulbyvan.stucoursebackend.model.dto.response.GenericRes;
+import com.eulbyvan.stucoursebackend.model.dto.response.SuccessRes;
 import com.eulbyvan.stucoursebackend.model.entity.sys.User;
 import com.eulbyvan.stucoursebackend.service.IUserService;
 import org.springframework.http.HttpStatus;
@@ -28,7 +28,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<GenericResponse> add(@Valid @RequestBody User user) {
+    public ResponseEntity<GenericRes> add(@Valid @RequestBody User user) {
         // ignore the id field if it's provided in the request body
         user.setId(null);
         user.setRoles(null);
@@ -36,7 +36,7 @@ public class UserController {
 
         User data = userService.add(user);
 
-        SuccessResponse res = new SuccessResponse();
+        SuccessRes res = new SuccessRes();
         res.setCode("01");
         res.setStatus(HttpStatus.CREATED.toString());
         res.setMessage("User added");
@@ -46,10 +46,10 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GenericResponse> getUser(@PathVariable Long id) {
+    public ResponseEntity<GenericRes> getUser(@PathVariable Long id) {
         User data = userService.getById(id);
 
-        SuccessResponse res = new SuccessResponse();
+        SuccessRes res = new SuccessRes();
         res.setCode("00");
         res.setStatus(HttpStatus.OK.toString());
         res.setMessage("User retrieved");
@@ -59,10 +59,10 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<GenericResponse> getAll() {
+    public ResponseEntity<GenericRes> getAll() {
         List<User> data = userService.getAll();
 
-        SuccessResponse res = new SuccessResponse();
+        SuccessRes res = new SuccessRes();
         res.setCode("00");
         res.setStatus(HttpStatus.OK.toString());
         res.setMessage("Users retrieved");
@@ -72,10 +72,10 @@ public class UserController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<GenericResponse> editProfile(@PathVariable Long id, @RequestBody EditProfileVM req) {
-        EditProfileVM data = userService.editProfile(id, req);
+    public ResponseEntity<GenericRes> editProfile(@PathVariable Long id, @RequestBody EditProfileReq req) {
+        EditProfileReq data = userService.editProfile(id, req);
 
-        SuccessResponse res = new SuccessResponse();
+        SuccessRes res = new SuccessRes();
         res.setCode("00");
         res.setStatus(HttpStatus.OK.toString());
         res.setMessage("Profile saved");
@@ -85,10 +85,10 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<GenericResponse> deleteById(@PathVariable Long id) {
+    public ResponseEntity<GenericRes> deleteById(@PathVariable Long id) {
         User data = userService.deleteById(id);
 
-        SuccessResponse res = new SuccessResponse();
+        SuccessRes res = new SuccessRes();
         res.setCode("00");
         res.setStatus(HttpStatus.OK.toString());
         res.setMessage("User deleted by id: " + id);

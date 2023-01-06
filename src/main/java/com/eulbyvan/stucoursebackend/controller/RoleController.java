@@ -1,7 +1,7 @@
 package com.eulbyvan.stucoursebackend.controller;
 
-import com.eulbyvan.stucoursebackend.model.dto.response.GenericResponse;
-import com.eulbyvan.stucoursebackend.model.dto.response.SuccessResponse;
+import com.eulbyvan.stucoursebackend.model.dto.response.GenericRes;
+import com.eulbyvan.stucoursebackend.model.dto.response.SuccessRes;
 import com.eulbyvan.stucoursebackend.model.entity.sys.Role;
 import com.eulbyvan.stucoursebackend.service.IRoleService;
 import org.springframework.http.HttpStatus;
@@ -27,10 +27,10 @@ public class RoleController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GenericResponse> getById(@PathVariable Long id) {
+    public ResponseEntity<GenericRes> getById(@PathVariable Long id) {
         Role data = roleService.getById(id);
 
-        SuccessResponse res = new SuccessResponse();
+        SuccessRes res = new SuccessRes();
         res.setCode("01");
         res.setStatus(HttpStatus.OK.toString());
         res.setMessage("Role retrieved by id: " + id);
@@ -40,10 +40,10 @@ public class RoleController {
     }
 
     @GetMapping
-    public ResponseEntity<GenericResponse> getAll() {
+    public ResponseEntity<GenericRes> getAll() {
         List<Role> data = roleService.getAll();
 
-        SuccessResponse res = new SuccessResponse();
+        SuccessRes res = new SuccessRes();
         res.setCode("01");
         res.setStatus(HttpStatus.OK.toString());
         res.setMessage("Roles retrieved");
@@ -53,13 +53,13 @@ public class RoleController {
     }
 
     @PostMapping
-    public ResponseEntity<GenericResponse> add(@Valid @RequestBody Role newRole) {
+    public ResponseEntity<GenericRes> add(@Valid @RequestBody Role newRole) {
         // ignore the id field if it's provided in the request body
         newRole.setId(null);
 
         Role data = roleService.add(newRole);
 
-        SuccessResponse res = new SuccessResponse();
+        SuccessRes res = new SuccessRes();
         res.setCode("01");
         res.setStatus(HttpStatus.CREATED.toString());
         res.setMessage("Role added");
@@ -69,10 +69,10 @@ public class RoleController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<GenericResponse> updateById(@PathVariable Long id, @RequestBody Role role) {
+    public ResponseEntity<GenericRes> updateById(@PathVariable Long id, @RequestBody Role role) {
         Role data = roleService.updateById(id, role);
 
-        SuccessResponse res = new SuccessResponse();
+        SuccessRes res = new SuccessRes();
         res.setCode("00");
         res.setStatus(HttpStatus.OK.toString());
         res.setMessage("Role updated by id: " + id);
@@ -82,10 +82,10 @@ public class RoleController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<GenericResponse> deleteById(@PathVariable Long id) {
+    public ResponseEntity<GenericRes> deleteById(@PathVariable Long id) {
         Role data = roleService.deleteById(id);
 
-        SuccessResponse res = new SuccessResponse();
+        SuccessRes res = new SuccessRes();
         res.setCode("00");
         res.setStatus(HttpStatus.OK.toString());
         res.setMessage("Role deleted by id: " + id);

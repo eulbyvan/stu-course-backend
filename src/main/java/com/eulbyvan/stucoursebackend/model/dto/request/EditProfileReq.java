@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
  */
 
 @Data
-public class EditProfileVM {
+public class EditProfileReq {
     @NotNull
     @Size(min=4, max=255)
     private String displayName;

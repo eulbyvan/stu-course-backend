@@ -13,12 +13,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SuccessResponse extends GenericResponse {
+public class SuccessRes extends GenericRes {
     private Object data;
 
-    public SuccessResponse(String code, String status, String message) {
+    public SuccessRes(String code, String status, String message) {
         super.setCode("00");
         super.setStatus("OK");
-        super.setMessage("The process has been completed successfully");
+        super.setMessage("Success");
     }
 }

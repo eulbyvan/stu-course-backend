@@ -1,6 +1,6 @@
 package com.eulbyvan.stucoursebackend.service.implementation;
 
-import com.eulbyvan.stucoursebackend.model.dto.response.NotFoundException;
+import com.eulbyvan.stucoursebackend.shared.exception.NotFoundException;
 import com.eulbyvan.stucoursebackend.model.entity.mst.Course;
 import com.eulbyvan.stucoursebackend.model.entity.mst.CourseType;
 import com.eulbyvan.stucoursebackend.repo.ICourseRepo;

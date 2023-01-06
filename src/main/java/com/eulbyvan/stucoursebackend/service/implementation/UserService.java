@@ -1,8 +1,7 @@
 package com.eulbyvan.stucoursebackend.service.implementation;
 
-import com.eulbyvan.stucoursebackend.model.dto.request.EditProfileVM;
-import com.eulbyvan.stucoursebackend.model.dto.response.NotFoundException;
-import com.eulbyvan.stucoursebackend.model.entity.sys.Role;
+import com.eulbyvan.stucoursebackend.model.dto.request.EditProfileReq;
+import com.eulbyvan.stucoursebackend.shared.exception.NotFoundException;
 import com.eulbyvan.stucoursebackend.model.entity.sys.User;
 import com.eulbyvan.stucoursebackend.repo.IUserRepo;
 import com.eulbyvan.stucoursebackend.service.IRoleService;
@@ -56,7 +55,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public EditProfileVM editProfile(Long id, EditProfileVM req) {
+    public EditProfileReq editProfile(Long id, EditProfileReq req) {
         User existingUser = userRepo.findById(id).orElseThrow(() -> new NotFoundException("User not found"));
 
         existingUser.setDisplayName(req.getDisplayName());

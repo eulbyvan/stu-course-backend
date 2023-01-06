@@ -1,8 +1,8 @@
-package com.eulbyvan.stucoursebackend.shared.exception;
+package com.eulbyvan.stucoursebackend.controller;
 
 import com.eulbyvan.stucoursebackend.model.dto.response.ApiError;
-import com.eulbyvan.stucoursebackend.model.dto.response.ErrorResponse;
-import com.eulbyvan.stucoursebackend.model.dto.response.NotFoundException;
+import com.eulbyvan.stucoursebackend.model.dto.response.FailedRes;
+import com.eulbyvan.stucoursebackend.shared.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -43,8 +43,8 @@ public class ErrorController {
 
     @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public final ResponseEntity<ErrorResponse> handleResourceNotFoundException(NotFoundException ex) {
-        ErrorResponse error = new ErrorResponse();
+    public final ResponseEntity<FailedRes> handleResourceNotFoundException(NotFoundException ex) {
+        FailedRes error = new FailedRes();
         error.setCode("X00");
         error.setStatus(HttpStatus.NOT_FOUND.toString());
         error.setMessage(ex.getMessage());

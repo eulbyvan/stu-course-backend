@@ -2,7 +2,7 @@ package com.eulbyvan.stucoursebackend;
 
 import com.eulbyvan.stucoursebackend.model.entity.sys.Role;
 import com.eulbyvan.stucoursebackend.model.dto.response.ApiError;
-import com.eulbyvan.stucoursebackend.model.dto.response.GenericResponse;
+import com.eulbyvan.stucoursebackend.model.dto.response.GenericRes;
 import com.eulbyvan.stucoursebackend.repo.IRoleRepo;
 import org.junit.Before;
 import org.junit.Test;
@@ -78,14 +78,14 @@ public class RoleControllerTest {
     @Test
     public void postRole_whenRoleIsValid_recieveSuccessMessage() {
         Role role = createValidRole();
-        ResponseEntity<GenericResponse> response = postSignup(role, GenericResponse.class);
+        ResponseEntity<GenericRes> response = postSignup(role, GenericRes.class);
         assertThat(response.getBody().getMessage()).isNotNull();
     }
 
     @Test
     public void postRole_whenRoleIsValid_recieveCreated() {
         Role role = createValidRole();
-        ResponseEntity<GenericResponse> response = postSignup(role, GenericResponse.class);
+        ResponseEntity<GenericRes> response = postSignup(role, GenericRes.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
     }
 

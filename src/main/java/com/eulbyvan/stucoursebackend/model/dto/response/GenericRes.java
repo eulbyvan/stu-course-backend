@@ -9,7 +9,7 @@ import lombok.Data;
  */
 
 @Data
-public class GenericResponse {
+public class GenericRes {
     private String code;
     private String status;
     private String message;

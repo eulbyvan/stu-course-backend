@@ -1,7 +1,7 @@
 package com.eulbyvan.stucoursebackend.controller;
 
-import com.eulbyvan.stucoursebackend.model.dto.response.GenericResponse;
-import com.eulbyvan.stucoursebackend.model.dto.response.SuccessResponse;
+import com.eulbyvan.stucoursebackend.model.dto.response.GenericRes;
+import com.eulbyvan.stucoursebackend.model.dto.response.SuccessRes;
 import com.eulbyvan.stucoursebackend.model.entity.mst.Course;
 import com.eulbyvan.stucoursebackend.service.ICourseService;
 import org.springframework.http.HttpStatus;
@@ -27,10 +27,10 @@ public class CourseController {
     }
 
     @GetMapping
-    public ResponseEntity<GenericResponse> getAll() {
+    public ResponseEntity<GenericRes> getAll() {
         List<Course> data = courseService.getAll();
 
-        SuccessResponse res = new SuccessResponse();
+        SuccessRes res = new SuccessRes();
         res.setCode("00");
         res.setStatus(HttpStatus.OK.toString());
         res.setMessage("Courses retrieved");
@@ -40,10 +40,10 @@ public class CourseController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GenericResponse> getById(@PathVariable Long id) {
+    public ResponseEntity<GenericRes> getById(@PathVariable Long id) {
         Course data = courseService.getById(id);
 
-        SuccessResponse res = new SuccessResponse();
+        SuccessRes res = new SuccessRes();
         res.setCode("00");
         res.setStatus(HttpStatus.OK.toString());
         res.setMessage("Course retrieved by id: " + id);
@@ -53,13 +53,13 @@ public class CourseController {
     }
 
     @PostMapping
-    public ResponseEntity<GenericResponse> add(@Valid @RequestBody Course newCourse) {
+    public ResponseEntity<GenericRes> add(@Valid @RequestBody Course newCourse) {
         // ignore the id field if it's provided in the request body
         newCourse.setId(null);
 
         Course data = courseService.add(newCourse);
 
-        SuccessResponse res = new SuccessResponse();
+        SuccessRes res = new SuccessRes();
         res.setCode("01");
         res.setStatus(HttpStatus.CREATED.toString());
         res.setMessage("Course added");
@@ -69,10 +69,10 @@ public class CourseController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<GenericResponse> updateById(@PathVariable Long id, @RequestBody Course course) {
+    public ResponseEntity<GenericRes> updateById(@PathVariable Long id, @RequestBody Course course) {
         Course data = courseService.updateById(id, course);
 
-        SuccessResponse res = new SuccessResponse();
+        SuccessRes res = new SuccessRes();
         res.setCode("00");
         res.setStatus(HttpStatus.OK.toString());
         res.setMessage("Course updated by id: " + id);
@@ -82,10 +82,10 @@ public class CourseController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<GenericResponse> deleteById(@PathVariable Long id) {
+    public ResponseEntity<GenericRes> deleteById(@PathVariable Long id) {
         Course data = courseService.deleteById(id);
 
-        SuccessResponse res = new SuccessResponse();
+        SuccessRes res = new SuccessRes();
         res.setCode("00");
         res.setStatus(HttpStatus.OK.toString());
         res.setMessage("Course deleted by id: " + id);

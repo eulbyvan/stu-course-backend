@@ -2,7 +2,7 @@ package com.eulbyvan.stucoursebackend;
 
 import com.eulbyvan.stucoursebackend.model.entity.sys.User;
 import com.eulbyvan.stucoursebackend.model.dto.response.ApiError;
-import com.eulbyvan.stucoursebackend.model.dto.response.GenericResponse;
+import com.eulbyvan.stucoursebackend.model.dto.response.GenericRes;
 import com.eulbyvan.stucoursebackend.repo.IUserRepo;
 import org.junit.Before;
 import org.junit.Test;
@@ -82,21 +82,21 @@ public class UserControllerTest {
     @Test
     public void postUser_whenUserIsValid_recieveSuccessMessage() {
         User user = createValidUser();
-        ResponseEntity<GenericResponse> response = postSignup(user, GenericResponse.class);
+        ResponseEntity<GenericRes> response = postSignup(user, GenericRes.class);
         assertThat(response.getBody().getMessage()).isNotNull();
     }
 
     @Test
     public void postUser_whenUserIsValid_recieveCreated() {
         User user = createValidUser();
-        ResponseEntity<GenericResponse> response = postSignup(user, GenericResponse.class);
+        ResponseEntity<GenericRes> response = postSignup(user, GenericRes.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
     }
 
     @Test
     public void postUser_whenUserIsValid_passwordIsHashedInDatabase() {
         User user = createValidUser();
-        postSignup(user, GenericResponse.class);
+        postSignup(user, GenericRes.class);
         List<User> users = userRepo.findAll();
         User userInDb = users.get(0);
         assertThat(userInDb.getPassword()).isNotEqualTo(user.getPassword());

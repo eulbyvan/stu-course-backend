@@ -11,10 +11,10 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class ErrorResponse extends GenericResponse {
-    public ErrorResponse(String code, String status, String message) {
+public class FailedRes extends GenericRes {
+    public FailedRes(String code, String status, String message) {
         super.setCode("X00");
-        super.setStatus("Error");
+        super.setStatus("Failed");
         super.setMessage("Something went wrong");
     }
 }
